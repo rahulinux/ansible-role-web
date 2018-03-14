@@ -12,5 +12,8 @@
     dest: "{{ item.dest }}" 
   with_items:
     - { src: docker-compose.yml.j2, dest: "{{ app_home }}/docker-compose.yml" } 
+    - { src: docker-compose-app.service.j2, dest: "/etc/systemd/system/docker-compose-app.service" } 
     - { src: env.j2, dest: "{{ app_home }}/.env" } 
     - { src: application.properties.j2, dest: "{{ app_home }}/config/application.properties" } 
+  notify:
+    - restart docker-compose-app

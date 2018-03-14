@@ -1,1 +1,5 @@
 app_home: "/opt/apps/web"
+app_version: "latest"
+app_image: "rahulinux/web:{{ app_version }}"
+port: "8080"
+availability_zone: "None"

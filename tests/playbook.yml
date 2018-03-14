@@ -1,0 +1,26 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+      - name: Applying Role 
+        include_role: 
+          name: ansible-role-web 
+
+  post_tasks:
+
+      - name: Check Page returns 
+        uri: 
+          url: http://localhost:8080/hello
+          return_content: yes
+        register: webpage
+        until: "(webpage|success) and (webpage.status == 200)"
+        retries: 5
+        delay: 10
+        ignore_errors: true
+
+      - name: Fail if does not return hello
+        fail:
+        when: "'hello' not in webpage.content"
+
+

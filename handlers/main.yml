@@ -1,0 +1,5 @@
+---
+- name: restart docker-compose-app
+  service:
+      name: docker-compose-app
+      state: restarted
