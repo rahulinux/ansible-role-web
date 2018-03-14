@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    image: {{ app_image }}
+    ports:
+      - "{{ port }}:{{ port }}"
+    command: java -jar app.jar --spring.config.location=/config/application.properties
+    volumes:
+      - "./config:/config"
+    restart: on-failure

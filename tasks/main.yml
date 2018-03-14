@@ -1,0 +1,16 @@
+---
+- name: create folders for docker-compose
+  file: 
+    dest: "{{ app_home }}/{{ item }}"
+    state: directory
+  with_items:
+      - config
+
+- name: deploy docker-compose.yml, .env, configuration 
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}" 
+  with_items:
+    - { src: docker-compose.yml.j2, dest: "{{ app_home }}/docker-compose.yml" } 
+    - { src: env.j2, dest: "{{ app_home }}/.env" } 
+    - { src: application.properties.j2, dest: "{{ app_home }}/config/application.properties" } 
