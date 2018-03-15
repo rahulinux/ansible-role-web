@@ -3,3 +3,4 @@
   service:
       name: docker-compose-app
       state: restarted
+  become: yes

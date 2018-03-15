@@ -1,3 +1,4 @@
+deployer_user: "deploy"
 app_home: "/opt/apps/web"
 app_version: "latest"
 app_image: "rahulinux/web:{{ app_version }}"
