@@ -1,4 +1,6 @@
 ---
 - hosts: all
+  become: yes
+  connection: local
   roles:
-      - .
+      - ../
