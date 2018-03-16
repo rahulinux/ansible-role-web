@@ -1,6 +1,6 @@
 ---
-- name: restart docker-compose-app
+- name: reload docker-compose-app
   service:
       name: docker-compose-app
-      state: restarted
+      state: reloaded
   become: yes

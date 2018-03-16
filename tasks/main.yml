@@ -20,4 +20,4 @@
     - { src: env.j2, dest: "{{ app_home }}/.env" } 
     - { src: application.properties.j2, dest: "{{ app_home }}/config/application.properties" } 
   notify:
-    - restart docker-compose-app
+    - reload docker-compose-app
